@@ -12,6 +12,7 @@
   "prHourlyLimit": 0,
   "rebaseWhen": "conflicted",
   "automerge": false,
+  "reviewers": ["team:automatic-pr-reviewers"],
   "packageRules": [
     {
       "description": "Ignore all dependencies by default; specific ones are enabled manually below",
