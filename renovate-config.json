@@ -14,7 +14,7 @@
   "automerge": false,
   "packageRules": [
     {
-      "description": "Org-wide: only manage scewo-messages sources, ignore everything else",
+      "description": "Ignore all dependencies by default; specific ones are enabled manually below",
       "matchPackageNames": ["*"],
       "enabled": false
     },
