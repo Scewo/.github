@@ -12,15 +12,17 @@
   "prHourlyLimit": 0,
   "rebaseWhen": "conflicted",
   "automerge": false,
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 5am on monday"]
-  },
   "packageRules": [
+    {
+      "description": "Org-wide: only manage scewo-messages sources, ignore everything else",
+      "matchPackageNames": ["*"],
+      "enabled": false
+    },
     {
       "description": "Bundle all imx8-scewo-messages workspace crates into one PR per tag",
       "matchManagers": ["cargo"],
       "matchSourceUrls": ["https://github.com/Scewo/imx8-scewo-messages"],
+      "enabled": true,
       "groupName": "imx8-scewo-messages",
       "commitMessageTopic": "imx8-scewo-messages",
       "commitMessagePrefix": "chore(deps):"
@@ -29,6 +31,7 @@
       "description": "Bundle all scewo-messages (bro) workspace crates into one PR per tag",
       "matchManagers": ["cargo"],
       "matchSourceUrls": ["https://github.com/Scewo/scewo-messages"],
+      "enabled": true,
       "groupName": "scewo-messages",
       "commitMessageTopic": "scewo-messages",
       "commitMessagePrefix": "chore(deps):"
