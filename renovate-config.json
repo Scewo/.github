@@ -11,6 +11,7 @@
   "prConcurrentLimit": 10,
   "prHourlyLimit": 0,
   "rebaseWhen": "conflicted",
+  "automerge": false,
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 5am on monday"]
@@ -31,13 +32,6 @@
       "groupName": "scewo-messages",
       "commitMessageTopic": "scewo-messages",
       "commitMessagePrefix": "chore(deps):"
-    },
-    {
-      "description": "Pre-1.0 minor bumps may be breaking; require human review",
-      "matchManagers": ["cargo"],
-      "matchCurrentVersion": "/^v?0\\./",
-      "matchUpdateTypes": ["minor", "major"],
-      "automerge": false
     }
   ]
 }
