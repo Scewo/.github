@@ -22,7 +22,7 @@
     {
       "description": "Bundle all imx8-scewo-messages workspace crates into one PR per tag",
       "matchManagers": ["cargo"],
-      "matchSourceUrls": ["https://github.com/Scewo/imx8-scewo-messages"],
+      "matchPackageNames": ["Scewo/imx8-scewo-messages"],
       "enabled": true,
       "groupName": "imx8-scewo-messages",
       "commitMessageTopic": "imx8-scewo-messages",
@@ -31,7 +31,7 @@
     {
       "description": "Bundle all scewo-messages (bro) workspace crates into one PR per tag",
       "matchManagers": ["cargo"],
-      "matchSourceUrls": ["https://github.com/Scewo/scewo-messages"],
+      "matchPackageNames": ["Scewo/scewo-messages"],
       "enabled": true,
       "groupName": "scewo-messages",
       "commitMessageTopic": "scewo-messages",
