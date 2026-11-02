@@ -13,6 +13,19 @@
   "rebaseWhen": "conflicted",
   "automerge": false,
   "reviewers": ["team:automatic-pr-reviewers"],
+  "customManagers": [
+    {
+      "description": "Git tags of Scewo repos fetched with CMake FetchContent in lib/<name>/CMakeLists.txt, and MCU firmware tags embedded in the M7 image",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)lib/[^/]+/CMakeLists\\.txt$/"],
+      "matchStrings": [
+        "set\\(\\w+_TAG\\s+(?<currentValue>v\\d[^)\\s]*)\\)[\\s\\S]*?GIT_REPOSITORY\\s+git@github\\.com:(?<depName>Scewo/[\\w.-]+?)(?:\\.git)?\\s",
+        "set\\(_tag\\s+(?<currentValue>v\\d[^)\\s]*)\\)[\\s\\S]*?set\\(_repo\\s+\"git@github\\.com:(?<depName>Scewo/[\\w.-]+?)(?:\\.git)?\"\\)"
+      ],
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver-coerced"
+    }
+  ],
   "packageRules": [
     {
       "description": "Ignore all dependencies by default; specific ones are enabled manually below",
@@ -20,10 +33,11 @@
       "enabled": false
     },
     {
-      "description": "Bundle all imx8-scewo-messages workspace crates into one PR per tag",
-      "matchManagers": ["cargo"],
+      "description": "Bundle all imx8-scewo-messages dependencies (Rust workspace crates and CMake FetchContent) into one PR per tag",
+      "matchManagers": ["cargo", "custom.regex"],
       "matchPackageNames": ["Scewo/imx8-scewo-messages"],
       "enabled": true,
+      "separateMajorMinor": false,
       "groupName": "imx8-scewo-messages",
       "commitMessageTopic": "imx8-scewo-messages",
       "commitMessagePrefix": "chore(deps):"
@@ -35,6 +49,21 @@
       "enabled": true,
       "groupName": "scewo-messages",
       "commitMessageTopic": "scewo-messages",
+      "commitMessagePrefix": "chore(deps):"
+    },
+    {
+      "description": "Shared MCU libraries and the MCU firmware embedded in the M7 image (CMake FetchContent tags)",
+      "matchManagers": ["custom.regex"],
+      "matchPackageNames": [
+        "Scewo/stm32-shared",
+        "Scewo/mcu-shared",
+        "Scewo/go-control-panel-mcu",
+        "Scewo/go-extension-mcu",
+        "Scewo/go-power-safety-mcu",
+        "Scewo/go-seat-box-mcu"
+      ],
+      "enabled": true,
+      "separateMajorMinor": false,
       "commitMessagePrefix": "chore(deps):"
     }
   ]
