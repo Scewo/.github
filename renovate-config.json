@@ -26,7 +26,8 @@
       "enabled": true,
       "groupName": "imx8-scewo-messages",
       "commitMessageTopic": "imx8-scewo-messages",
-      "commitMessagePrefix": "chore(deps):"
+      "commitMessagePrefix": "chore(deps):",
+      "separateMajorMinor": false
     },
     {
       "description": "Bundle all scewo-messages (bro) workspace crates into one PR per tag",
@@ -35,7 +36,8 @@
       "enabled": true,
       "groupName": "scewo-messages",
       "commitMessageTopic": "scewo-messages",
-      "commitMessagePrefix": "chore(deps):"
+      "commitMessagePrefix": "chore(deps):",
+      "separateMajorMinor": false
     }
   ]
 }
